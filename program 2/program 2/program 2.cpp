@@ -38,40 +38,101 @@ int bintodec()
 	return total;
 }
 
+string dectobin()
+{
+	int user_input = 0;
+	int s = 1;
+	string binary = "";
+	cout << "Enter a decimal number: ";
+	cin >> user_input;
+
+
+	if (user_input <= 128)
+	{
+		for (int i = 7; i != -1; i--)
+		{
+			s = pow(2,i);
+			cout << "s = " << s << endl;
+			if (user_input >= s)
+			{
+				user_input -= s;
+				binary += "1";
+			}
+			else
+			{
+				binary += "0";
+			}
+			cout << "binary: " << binary << endl;
+
+		}
+	}
+	/*
+	while (user_input > 0)
+	{
+		
+		if (user_input - s >= 0)
+		{
+			binary += "1";
+		}
+		else
+		{
+			binary +="0";
+		}
+		cout << binary << endl;
+		user_input = user_input - s;
+		cout << user_input << " after -s" << endl;
+
+		s*=2;
+	}*/
+	return binary;
+}
+
 
 
 
 int main()
 {
-	int user_input = 0;
-
-	cout << "=========================================" << endl;
-	cout << "1: Binary --> Decimal\n2: Decimal --> Binary" << endl;
-	cout << "3: Binary --> Hexadecimal\n4: Hexadecimal --> Binary" << endl;
-	cout << "Others: Quit" << endl;
-	cout << "=========================================" << endl;
-
-	cin >> user_input;
-
-	if (user_input == 1)
+	bool more = true;
+	while (more)
 	{
-		bintodec();
-		cout << endl;
+
+		int user_input = 0;
+
+		cout << "=========================================" << endl;
+		cout << "1: Binary --> Decimal\n2: Decimal --> Binary" << endl;
+		cout << "3: Binary --> Hexadecimal\n4: Hexadecimal --> Binary" << endl;
+		cout << "Others: Quit" << endl;
+		cout << "=========================================" << endl;
+
+		cin >> user_input;
+
+		if (cin.fail())
+		{
+			more = false;
+			cout << "Thank you for using this program." << endl;
+		}
+
+
+		else if (user_input == 1)
+		{
+			bintodec();
+			cout << endl;
+		}
+	
+		else if (user_input == 2)
+		{
+			cout << dectobin()<< endl;
+		}
+		/*
+		else if (user_input == 3)
+		{
+			cout << bintohex()<< endl;
+		}
+		else if (user_input == 4)
+		{
+			cout << hextobin()<< endl;
+		}*/
 	}
-	/*
-	else if (user_input == 2)
-	{
-		cout << dectobin()<< endl;
-	}
-	else if (user_input == 3)
-	{
-		cout << bintohex()<< endl;
-	}
-	else if (user_input == 4)
-	{
-		cout << hextobin()<< endl;
-	}*/
-
 
 
 	
