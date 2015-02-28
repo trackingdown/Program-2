@@ -19,23 +19,22 @@ int bintodec()
 	int s = 1; //used to count while moving up on the binary number list
 	cout << "Enter a binary number: ";
 	cin >> user_input;
-	//while (
 
-	int total = 0;
+	int decimal = 0;
 
 	cout << "Binary: " << user_input;
 
 	int i = (user_input % 10);
 	while (user_input > 0)
 	{
-		total += i * s;
+		decimal += i * s;
 		user_input = user_input / 10;
 		i = (user_input % 10);
 		s *= 2;
 
 	}
-	cout <<" --> Decimal: " << total << endl; 
-	return total;
+	cout <<" --> Decimal: " << decimal << endl; 
+	return decimal;
 }
 
 string dectobin()
@@ -46,8 +45,9 @@ string dectobin()
 	cout << "Enter a decimal number: ";
 	cin >> user_input;
 
+	cout << "Decimal: "<< user_input;
 
-	if (user_input <= 128)
+	if (user_input <= 255)
 	{
 		for (int i = 7; i != -1; i--)
 		{
@@ -66,26 +66,119 @@ string dectobin()
 
 		}
 	}
-	/*
-	while (user_input > 0)
+	else
 	{
-		
-		if (user_input - s >= 0)
+		int i = 0;
+		while (s < user_input)
 		{
-			binary += "1";
+			s = pow(2,i);
+			i++;
 		}
-		else
+		i--;
+		if (s > user_input)
 		{
-			binary +="0";
+			s /= 2;
 		}
-		cout << binary << endl;
-		user_input = user_input - s;
-		cout << user_input << " after -s" << endl;
 
-		s*=2;
-	}*/
+		for (s > -1; i--;)
+		{
+			
+			if (user_input >= s)
+			{
+				user_input -= s;
+				binary += "1";
+			}
+			else
+			{
+				binary += "0";
+			}
+			s /= 2;
+		}
+	
+	cout << " --> Binary: " << binary << endl;
+	}
+
 	return binary;
 }
+
+int bintohex()
+{
+	int user_input = 0;
+	int s = 1; //used to count while moving up on the binary number list
+	cout << "Enter a binary number: ";
+	cin >> user_input;
+
+	int decimal = 0;
+	cout << "Binary: " << user_input;
+
+	int i = (user_input % 10);
+	while (user_input > 0)
+	{
+		decimal += i * s;
+		user_input = user_input / 10;
+		i = (user_input % 10);
+		s *= 2;
+	}
+	string F = "1111";
+	string f = "1111";
+	string E = "1110";
+	string e = "1110";
+	string D = "1101";
+	string d = "1101";
+	string C = "1100";
+	string c = "1100";
+	string B = "1011";
+	string b = "1011";
+	string A = "1010";
+	string a = "1010";
+
+
+	string hex = "";
+	while (decimal >= A)
+	{
+		if (decimal >= F)
+		{
+			decimal -= F;
+			hex += "F";
+		}
+		if (decimal >= E)
+		{
+			decimal -= E;
+			hex += "E";
+		}
+		if (decimal >= D)
+		{
+			decimal -= D;
+			hex += "D";
+		}
+		if (decimal >= C)
+		{
+			decimal -= C;
+			hex += "C";
+		}
+		if (decimal >= B)
+		{
+			decimal -= B;
+			hex += "B";
+		}
+		if (decimal >= A)
+		{
+			decimal -= A;
+			hex += "A";
+		}
+
+	}
+	cout << " --> Hexadecimal: ";
+	if (decimal > 0)
+	{
+		cout << decimal;
+	}
+	cout << hex << endl;
+
+
+return decimal;
+}
+
 
 
 
@@ -121,13 +214,16 @@ int main()
 	
 		else if (user_input == 2)
 		{
-			cout << dectobin()<< endl;
+			dectobin();
+			cout << endl;
 		}
-		/*
+		
 		else if (user_input == 3)
 		{
-			cout << bintohex()<< endl;
+			bintohex();
+			cout << endl;
 		}
+		/*
 		else if (user_input == 4)
 		{
 			cout << hextobin()<< endl;
