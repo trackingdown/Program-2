@@ -180,6 +180,109 @@ return decimal;
 }
 
 
+string hextobin()
+{
+	string F = "1111";
+	string f = "1111";
+	string E = "1110";
+	string e = "1110";
+	string D = "1101";
+	string d = "1101";
+	string C = "1100";
+	string c = "1100";
+	string B = "1011";
+	string b = "1011";
+	string A = "1010";
+	string a = "1010";
+
+	string user_input;
+	int s = 0;
+	cout << "Enter a hexicedcimal number: " << endl;
+	cin >> user_input;
+	
+	cout << "Hexadecimal: " << user_input;
+
+	string hex;
+	//need to split to ints from the string variables somehow
+	
+	string w;
+	int n = user_input.length();
+	for (int i = 0; i < n;)
+	{
+		w = user_input.substr(i,1);
+
+		i++;
+		if (w == "0")
+		{
+			hex += "0000";
+		}
+		else if (w == "1")
+		{
+			hex += "0001";
+		}
+		else if (w == "2")
+		{
+			hex += "0010";
+		}
+		else if (w == "3")
+		{
+			hex += "0010";
+		}
+		else if (w == "4")
+		{
+			hex += "0100";
+		}
+		else if (w == "5")
+		{
+			hex += "0101";
+		}
+
+		else if (w == "6")
+		{
+			hex += "0110";
+		}
+		else if (w == "7")
+		{
+			hex += "0111";
+		}
+		else if (w == "8")
+		{
+			hex += "1000";
+		}
+		else if (w == "9")
+		{
+			hex += "1001";
+		}
+		else if (w == "A" || w == "a")
+		{
+			hex += A;
+		}
+		else if (w == "B" || w == "b")
+		{
+			hex += B;
+		}
+		else if (w == "C" || w == "c")
+		{
+			hex += C;
+		}
+		else if (w == "D" || w == "d")
+		{
+			hex += D;
+		}
+		else if (w == "E" || w == "e")
+		{
+			hex += E;
+		}
+		else if (w == "F" || w == "f")
+		{
+			hex += F;
+		}
+	
+	}
+	cout << " --> Hexadecimal: " << hex << endl;
+return w;
+}
+
 
 
 
@@ -223,11 +326,12 @@ int main()
 			bintohex();
 			cout << endl;
 		}
-		/*
+		
 		else if (user_input == 4)
 		{
-			cout << hextobin()<< endl;
-		}*/
+			hextobin();
+			cout << endl;
+		}
 	}
 
 
